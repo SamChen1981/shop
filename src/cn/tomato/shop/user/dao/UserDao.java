@@ -22,5 +22,20 @@ public class UserDao extends BaseDao {
 		}
 		return null;
 	}
+
+	public void save(User user) {
+		
+		getSession().save(user);
+		
+	}
+
+	public User login(User user) {
+		String hql = "FROM User u WHERE u.username = ? AND u.password = ?";
+		List<User> list = getSession().createQuery(hql).setString(0, user.getUsername()).setString(1, user.getPassword()).list();
+		if(list!=null&&list.size()>0){
+			return list.get(0);
+		}
+		return null;
+	}
 	
 }

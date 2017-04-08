@@ -24,6 +24,11 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	
 	private User user = new User();
 	
+	private String checkcode;
+	public void setCheckcode(String checkcode) {
+		this.checkcode = checkcode;
+	}
+	
 	@Override
 	public User getModel() {
 		// TODO Auto-generated method stub
@@ -43,7 +48,11 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		
 		return "registPage";
 	}
-	
+	/**
+	 * 根据username查询用户
+	 * @return
+	 * @throws IOException
+	 */
 	public String findByUserName() throws IOException{
 		
 		User existUser = userService.findByUserName(user.getUsername());
@@ -57,6 +66,40 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		
 		return NONE;
 		
+	}
+	
+	public String regist(){
+		//判断验证码
+		String checkcode1 = (String) ServletActionContext.getRequest().getSession().getAttribute("checkcode");
+		if(!(this.checkcode.equalsIgnoreCase(checkcode1))){
+			this.addActionError("验证码输入错误");
+			return "checkCodeFile";
+		}
+		userService.save(user);
+		this.addActionMessage("注册成功，请登录");
+		
+		return "msg";
+	}
+	
+	public String loginPage(){
+		return "loginPage";
+	}
+	
+	public String login(){
+		User existUser = userService.login(user);
+		if(existUser == null){
+			this.addActionMessage("登录失败，用户名或密码错误");
+			return LOGIN;
+		}else{
+			ServletActionContext.getRequest().getSession().setAttribute("existUser", existUser);
+			return "loginSuccess";
+		}
+		
+	}
+	
+	public String quit(){
+		ServletActionContext.getRequest().getSession().invalidate();
+		return "quit";
 	}
 
 	

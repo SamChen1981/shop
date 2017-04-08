@@ -26,11 +26,6 @@
         <property name="addr" type="java.lang.String">
             <column name="addr" />
         </property>
-        <property name="state" type="java.lang.Integer">
-            <column name="state" />
-        </property>
-        <property name="code" type="java.lang.String">
-            <column name="code" />
-        </property>
+
     </class>
 </hibernate-mapping>

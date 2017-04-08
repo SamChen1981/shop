@@ -1,16 +1,17 @@
 package cn.tomato.shop.user.service;
 
-import org.springframework.transaction.annotation.Transactional;
+
 
 import cn.tomato.shop.user.dao.UserDao;
 import cn.tomato.shop.user.vo.User;
+
 
 /**
  * 用户模块业务层代码
  * @author MadridSeven
  *
  */
-@Transactional //业务层要进行事务管理
+
 public class UserService {
 	
 	private UserDao userDao;
@@ -23,5 +24,17 @@ public class UserService {
 		return userDao.findByUserName(username);
 		
 	}
+
+	public void save(User user) {
+		
+		userDao.save(user);
+	}
+
+	public User login(User user) {
+		
+		return userDao.login(user);
+	}
+
+	
 
 }

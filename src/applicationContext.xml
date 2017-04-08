@@ -45,14 +45,23 @@
 	</bean>
 	
 	
-	<!-- 事务管理 -->
-	<!-- 事务管理器 -->
+	<!-- 配置spring声明式事务 -->
+	<!-- 1.配置hibernate的事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
-	<!-- 开启注解事务 -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<!-- 2.配置事务属性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- 3.配置事务切入点，再把事务属性和事务切入点关联起来 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* cn.tomato.shop.*.service.*.*(..))" id="txPointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+	</aop:config>
 	
 	
 	<!-- Action的配置_______________________ -->
@@ -61,6 +70,9 @@
 	<bean id="indexAction" class="cn.tomato.shop.index.action.IndexAction" scope="prototype">
 	
 	</bean>
+	
+	<!-- 验证码Action -->
+	<bean id="checkImgAction" class="cn.tomato.shop.user.action.CheckImgAction" scope="prototype"></bean>
 	
 	<!-- 用户操作的Action -->
 	<bean id="userAction" class="cn.tomato.shop.user.action.UserAction" scope="prototype">

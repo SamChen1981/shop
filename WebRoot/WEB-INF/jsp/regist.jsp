@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -68,6 +69,13 @@
 			return xmlHttp;
 	}
 	
+	function change(){
+		
+		var img1 = document.getElementById("checkImg");
+		img1.src="${ pageContext.request.contextPath }/checkImg.action?"+new Date().getTime();
+		
+	}
+	
 </script>
 
 </head>
@@ -96,8 +104,12 @@
 				<div class="main clearfix">
 					<div class="title">
 						<strong>会员注册</strong>USER REGISTER
+						
 					</div>
-					<form id="registerForm" method="post" novalidate="novalidate" onsubmit="return checkForm();">
+					<div>
+						<s:actionerror/>
+					</div>
+					<form id="registerForm" action="${ pageContext.request.contextPath }/user_regist.action" method="post" novalidate="novalidate" onsubmit="return checkForm();">
 						<table>
 							<tbody>
 								<tr>
@@ -120,7 +132,9 @@
 								<tr>
 									<th><span class="requiredField">*</span>E-mail:</th>
 									<td><input type="text" id="email" name="email"
-										class="text" maxlength="200" /></td>
+										class="text" maxlength="200" />
+										<span><s:fielderror fieldName="email"></s:fielderror></span>	
+									</td>
 								</tr>
 								<tr>
 									<th>姓名:</th>
@@ -142,10 +156,10 @@
 								<tr>
 									<th><span class="requiredField">*</span>验证码:</th>
 									<td><span class="fieldSet"> <input type="text"
-											id="captcha" name="captcha" class="text captcha"
+											id="checkcode" name="checkcode" class="text captcha"
 											maxlength="4" autocomplete="off" /><img
-											id="captchaImage" class="captchaImage"
-											src="${pageContext.request.contextPath}/image/captcha.jhtml" title="点击更换验证码" />
+											id="checkImg" class="captchaImage"
+											src="${pageContext.request.contextPath}/checkImg.action" onclick="change()" title="点击更换验证码" />
 									</span></td>
 								</tr>
 								<tr>
