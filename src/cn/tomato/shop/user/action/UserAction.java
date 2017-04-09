@@ -67,7 +67,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return NONE;
 		
 	}
-	
+	/**
+	 * 用户注册
+	 * @return
+	 */
 	public String regist(){
 		//判断验证码
 		String checkcode1 = (String) ServletActionContext.getRequest().getSession().getAttribute("checkcode");
@@ -84,7 +87,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	public String loginPage(){
 		return "loginPage";
 	}
-	
+	/**
+	 * 用户登录
+	 * @return
+	 */
 	public String login(){
 		User existUser = userService.login(user);
 		if(existUser == null){
@@ -96,7 +102,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		}
 		
 	}
-	
+	/**
+	 * 用户退出
+	 * @return
+	 */
 	public String quit(){
 		ServletActionContext.getRequest().getSession().invalidate();
 		return "quit";

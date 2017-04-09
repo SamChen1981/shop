@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-4-9 14:26:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.tomato.shop.category.vo.Category" table="category">
+        <id name="cid" type="java.lang.Integer">
+            <column name="cid" />
+            <generator class="native" />
+        </id>
+        <property name="cname" type="java.lang.String">
+            <column name="cname" />
+        </property>
+    </class>
+</hibernate-mapping>

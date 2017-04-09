@@ -40,6 +40,8 @@
 		<property name="mappingResources">
 			<list>
 				<value>cn/tomato/shop/user/vo/User.hbm.xml</value>
+				<value>cn/tomato/shop/category/vo/Category.hbm.xml</value>
+				<value>cn\tomato\shop\product\vo\Product.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -68,7 +70,8 @@
 	
 	<!-- 首页访问的Action -->
 	<bean id="indexAction" class="cn.tomato.shop.index.action.IndexAction" scope="prototype">
-	
+		<property name="categoryService" ref="categoryService"></property>
+		<property name="productService" ref="productService"></property>
 	</bean>
 	
 	<!-- 验证码Action -->
@@ -84,8 +87,24 @@
 		<property name="userDao" ref="userDao"></property>
 	</bean>
 	
+	<bean id="categoryService" class="cn.tomato.shop.category.service.CategoryService">
+		<property name="categoryDao" ref="categoryDao"></property>
+	</bean>
+	
+	<bean id="productService" class="cn.tomato.shop.product.service.ProductService">
+		<property name="productDao" ref="productDao"></property>
+	</bean>
+	
 	<!-- Dao的配置________________________ -->
 	<bean id="userDao" class="cn.tomato.shop.user.dao.UserDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="categoryDao" class="cn.tomato.shop.category.dao.CategoryDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="productDao" class="cn.tomato.shop.product.dao.ProductDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 

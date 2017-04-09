@@ -31,8 +31,8 @@
 					width="320" height="50" alt="正品保障" title="正品保障" />
 			</div>
 		</div>
-		
-		<%@ include file="menu.jsp" %>
+
+		<%@ include file="menu.jsp"%>
 
 	</div>
 
@@ -53,36 +53,12 @@
 				</ul>
 
 				<ul class="tabContent" style="display: block;">
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/b.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/c.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/d.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/e.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/f.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/g.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/h.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/i.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/i.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/i.jpg"
-							style="display: block;" /></a></li>
+
+					<s:iterator value="hlist" var="p">
+						<li><a target="_blank"><img
+								src="${pageContext.request.contextPath}/<s:property value="#p.image" />"
+								style="display: block;" /></a></li>
+					</s:iterator>
 				</ul>
 
 
@@ -101,37 +77,12 @@
 				</ul>
 
 				<ul class="tabContent" style="display: block;">
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/l.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/m.jpg"
-							style="display: block;" /></a></li>
 
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/n.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/o.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/p.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/m.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/15.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/l.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/l.jpg"
-							style="display: block;" /></a></li>
-					<li><a target="_blank"><img
-							src="${pageContext.request.contextPath}/image/l.jpg"
-							style="display: block;" /></a></li>
+					<s:iterator value="nlist" var="np">
+						<li><a target="_blank"><img
+								src="${pageContext.request.contextPath}/<s:property value="#np.image"/>"
+								style="display: block;" /></a></li>
+					</s:iterator>
 				</ul>
 
 
