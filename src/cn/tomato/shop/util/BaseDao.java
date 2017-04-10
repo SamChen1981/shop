@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 
+
 /**
  * 
  * @author MadridSeven
@@ -11,7 +12,7 @@ import org.hibernate.SessionFactory;
  */
 
 
-public class BaseDao {
+public class BaseDao{
 	
 	private SessionFactory sessionFactory;
 	

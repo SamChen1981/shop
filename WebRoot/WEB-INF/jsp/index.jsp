@@ -55,7 +55,7 @@
 				<ul class="tabContent" style="display: block;">
 
 					<s:iterator value="hlist" var="p">
-						<li><a target="_blank"><img
+						<li><a target="_blank" href="${pageContext.request.contextPath}/product_findByPid.action?pid=<s:property value="#p.pid"/>"><img
 								src="${pageContext.request.contextPath}/<s:property value="#p.image" />"
 								style="display: block;" /></a></li>
 					</s:iterator>
@@ -79,7 +79,7 @@
 				<ul class="tabContent" style="display: block;">
 
 					<s:iterator value="nlist" var="np">
-						<li><a target="_blank"><img
+						<li><a target="_blank" href="${pageContext.request.contextPath}/product_findByPid.action?pid=<s:property value="#np.pid"/>"><img
 								src="${pageContext.request.contextPath}/<s:property value="#np.image"/>"
 								style="display: block;" /></a></li>
 					</s:iterator>
