@@ -2,11 +2,17 @@ package cn.tomato.shop.product.action;
 
 
 
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import cn.tomato.shop.category.service.CategoryService;
+import cn.tomato.shop.category.vo.Category;
 import cn.tomato.shop.product.service.ProductService;
 import cn.tomato.shop.product.vo.Product;
+import cn.tomato.shop.util.PageBean;
 /**
  * 商品模块的action
  * @author MadridSeven
@@ -29,13 +35,38 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		this.productService = productService;
 	}
 	
+	private CategoryService categoryService;
+	public void setCategoryService(CategoryService categoryService) {
+		this.categoryService = categoryService;
+	}
+	
+	private Integer cid;
+	public void setCid(Integer cid) {
+		this.cid = cid;
+	}
+	public Integer getCid() {
+		return cid;
+	}
+	
+	private int page;
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+	
 	public String findByPid(){
 		
 		product = productService.findByPid(product.getPid());
 		
 		return "findByPid";
 	}
-	
+	//根据分类的ID查询商品
+	public String findByCid(){
+		
+		PageBean<Product> pageBean = productService.finByPageCid(cid,page);
+		ActionContext.getContext().getValueStack().set("pageBean", pageBean);
+		return "findByCid";
+	}
 	
 
 }

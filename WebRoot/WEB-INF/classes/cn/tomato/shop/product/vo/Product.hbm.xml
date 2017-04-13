@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-4-9 19:56:02 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2017-4-13 14:17:37 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="cn.tomato.shop.product.vo.Product" table="product">
         <id name="pid" type="java.lang.Integer">
@@ -29,5 +29,6 @@
         <property name="pdate" type="java.util.Date">
             <column name="pdate" />
         </property>
+        <many-to-one name="categorySecond" class="cn.tomato.shop.categorysecond.vo.CategorySecond" lazy="false" column="csid"></many-to-one>
     </class>
 </hibernate-mapping>

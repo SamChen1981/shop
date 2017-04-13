@@ -2,6 +2,8 @@ package cn.tomato.shop.product.vo;
 
 import java.util.Date;
 
+import cn.tomato.shop.categorysecond.vo.CategorySecond;
+
 public class Product {
 	
 	private Integer pid;
@@ -13,7 +15,13 @@ public class Product {
 	private Integer is_hot;
 	private Date pdate;
 	// 二级分类的外键:使用二级分类的对象.
-	
+	private CategorySecond categorySecond;
+	public CategorySecond getCategorySecond() {
+		return categorySecond;
+	}
+	public void setCategorySecond(CategorySecond categorySecond) {
+		this.categorySecond = categorySecond;
+	}
 	public Integer getPid() {
 		return pid;
 	}
