@@ -88,6 +88,11 @@
 		<property name="productService" ref="productService"></property>
 	</bean>
 	
+	<!-- 购物车的Action -->
+	<bean id="cartAction" class="cn.tomato.shop.cart.action.CartAction" scope="prototype">
+		<property name="productService" ref="productService"></property>
+	</bean>
+	
 	<!-- service的配置_________________________ -->
 	<bean id="userService" class="cn.tomato.shop.user.service.UserService">
 		<property name="userDao" ref="userDao"></property>

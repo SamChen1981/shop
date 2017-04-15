@@ -46,7 +46,7 @@ function checkForm(){
 			<div class="logo">
 				<a href="http://localhost:8080/mango/"> <img
 					src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif"
-					alt="传智播客">
+					alt="番茄商城">
 				</a>
 			</div>
 		</div>

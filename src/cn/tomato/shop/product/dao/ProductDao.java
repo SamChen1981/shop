@@ -73,4 +73,25 @@ public class ProductDao extends HibernateDaoSupport {
 		
 	}
 
+	public int findCountCsid(Integer csid) {
+		//根据二级分类查询商品个数
+		String hql = "select count(*) from Product p where p.categorySecond.csid = ?";
+		List<Long> list = (List<Long>) this.getHibernateTemplate().find(hql, csid);
+		if (list != null && list.size() > 0) {
+			return list.get(0).intValue();
+		}
+		
+		return 0;
+	}
+
+	public List<Product> findByPageCsid(Integer csid, int begin, int limit) {
+		String hql = "select p from Product p join p.categorySecond cs where cs.csid = ?";
+		List<Product> list = this.getHibernateTemplate()
+				.execute(new PageHibernateCallback<Product>(hql, new Object[] { csid }, begin, limit));
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+		return null;
+	}
+
 }
