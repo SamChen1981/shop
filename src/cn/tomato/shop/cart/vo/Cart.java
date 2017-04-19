@@ -13,10 +13,10 @@ public class Cart {
 		// 购物项集合:Map的key就是商品pid,value:购物项
 		private Map<Integer, CartItem> map = new LinkedHashMap<Integer, CartItem>();
 
-		// Cart对象中有一个叫cartItems属性.
+		// Cart对象中有一个叫cartItems属性
 		public Collection<CartItem> getCartItems(){
 			return map.values();
-		}
+		}  
 		
 		// 购物总计:
 		private double total;
