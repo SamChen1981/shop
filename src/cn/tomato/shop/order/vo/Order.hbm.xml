@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-4-20 21:47:54 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.tomato.shop.order.vo.Order" table="orders">
+        <id name="oid" type="java.lang.Integer">
+            <column name="oid" />
+            <generator class="native" />
+        </id>
+        <property name="total" type="java.lang.Double">
+            <column name="total" />
+        </property>
+        <property name="ordertime" type="java.util.Date">
+            <column name="ordertime" />
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="state" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone" />
+        </property>
+        <property name="addr" type="java.lang.String">
+            <column name="addr" />
+        </property>
+        <many-to-one name="user" class="cn.tomato.shop.user.vo.User" lazy="false">
+            <column name="uid" />
+        </many-to-one>
+        <set name="orderItems" lazy="false" cascade="save-update">
+            <key>
+                <column name="oid" />
+            </key>
+            <one-to-many class="cn.tomato.shop.order.vo.OrderItem" />
+        </set>
+    </class>
+</hibernate-mapping>

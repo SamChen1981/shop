@@ -15,7 +15,7 @@ public class Category {
 	
 	private Integer cid;
 	private String cname;
-	Set<CategorySecond> categorySeconds = new HashSet<CategorySecond>();
+	private Set<CategorySecond> categorySeconds = new HashSet<CategorySecond>();
 	public Integer getCid() {
 		return cid;
 	}

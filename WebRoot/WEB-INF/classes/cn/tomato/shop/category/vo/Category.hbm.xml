@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-4-13 14:17:37 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2017-4-20 21:47:54 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="cn.tomato.shop.category.vo.Category" table="category">
         <id name="cid" type="java.lang.Integer">
@@ -11,10 +11,11 @@
         <property name="cname" type="java.lang.String">
             <column name="cname" />
         </property>
-        
-        <set order-by="csid" name="categorySeconds" lazy="false">
-        	<key column="cid"></key>
-        	<one-to-many class="cn.tomato.shop.categorysecond.vo.CategorySecond"/>
+        <set order-by="csid" name="categorySeconds" lazy="false" cascade="delete">
+            <key>
+                <column name="cid" />
+            </key>
+            <one-to-many class="cn.tomato.shop.categorysecond.vo.CategorySecond" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-4-20 21:47:54 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.tomato.shop.order.vo.OrderItem" table="orderitem">
+        <id name="itemid" type="java.lang.Integer">
+            <column name="itemid" />
+            <generator class="native" />
+        </id>
+        <property name="count" type="java.lang.Integer">
+            <column name="count" />
+        </property>
+        <property name="subtotal" type="java.lang.Double">
+            <column name="subtotal" />
+        </property>
+        <many-to-one name="product" class="cn.tomato.shop.product.vo.Product">
+            <column name="pid" />
+        </many-to-one>
+        <many-to-one name="order" class="cn.tomato.shop.order.vo.Order">
+            <column name="oid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

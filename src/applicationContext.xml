@@ -43,6 +43,8 @@
 				<value>cn/tomato/shop/category/vo/Category.hbm.xml</value>
 				<value>cn/tomato/shop/product/vo/Product.hbm.xml</value>
 				<value>cn/tomato/shop/categorysecond/vo/CategorySecond.hbm.xml</value>
+				<value>cn/tomato/shop/order/vo/Order.hbm.xml</value>
+				<value>cn/tomato/shop/order/vo/OrderItem.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -93,6 +95,11 @@
 		<property name="productService" ref="productService"></property>
 	</bean>
 	
+	<!-- 订单Action -->
+	<bean id="orderAction" class="cn.tomato.shop.order.action.OrderAction" scope="prototype">
+		<property name="orderService" ref="orderService"></property>
+	</bean>
+	
 	<!-- service的配置_________________________ -->
 	<bean id="userService" class="cn.tomato.shop.user.service.UserService">
 		<property name="userDao" ref="userDao"></property>
@@ -106,6 +113,14 @@
 		<property name="productDao" ref="productDao"></property>
 	</bean>
 	
+	<bean id="orderService" class="cn.tomato.shop.order.service.OrderService">
+		<property name="orderDao" ref="orderDao"></property>
+	</bean> 
+	
+	<bean id="categorySecondService" class="cn.tomato.shop.categorysecond.service.CategorySecondService">
+		<property name="categorySecondDao" ref="categorySecondDao"></property>
+	</bean>
+	
 	<!-- Dao的配置________________________ -->
 	<bean id="userDao" class="cn.tomato.shop.user.dao.UserDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -116,6 +131,14 @@
 	</bean>
 	
 	<bean id="productDao" class="cn.tomato.shop.product.dao.ProductDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="orderDao" class="cn.tomato.shop.order.dao.OrderDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="categorySecondDao" class="cn.tomato.shop.categorysecond.dao.CategorySecondDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
